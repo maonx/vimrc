@@ -95,8 +95,8 @@ let g:user_zen_mode='a'
 """"""""""""""""""""""""""""""
 " => snipMate (beside <TAB> support <CTRL-j>)
 """"""""""""""""""""""""""""""
-ino <c-j> <c-r>=snipMate#TriggerSnippet()<cr>
-snor <c-j> <esc>i<right><c-r>=snipMate#TriggerSnippet()<cr>
+"ino <c-j> <c-r>=snipMate#TriggerSnippet()<cr>
+"snor <c-j> <esc>i<right><c-r>=snipMate#TriggerSnippet()<cr>
 
 
 """"""""""""""""""""""""""""""
@@ -169,11 +169,11 @@ let g:gitgutter_enabled=0
 nnoremap <silent> <leader>d :GitGutterToggle<cr>
 
 "UltiSnips 设置"{{{
-let g:UltiSnipsUsePythonVersion = 3
+let g:UltiSnipsUsePythonVersion = 2
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:UltiSnipsSnippetDirectories=[$HOME.'/snippets']
+let g:UltiSnipsSnippetDirectories=[$HOME.'/Documents/snippets']
 let g:UltiSnipsRemoveSelectModeMappings = 1
 "}}}
 

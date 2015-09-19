@@ -77,6 +77,7 @@ let $LANG='en'
 set langmenu=en
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
+set fileencodings=utf-8,cp936
 
 " Turn on the WiLd menu
 set wildmenu
@@ -93,7 +94,7 @@ endif
 set ruler
 
 " Height of the command bar
-set cmdheight=2
+set cmdheight=1
 
 " A buffer becomes hidden when it is abandoned
 set hid
@@ -137,8 +138,10 @@ set t_vb=
 set tm=500
 
 " Add a bit extra margin to the left
-set foldcolumn=1
+set foldcolumn=0
 
+" Show number
+set number
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -157,10 +160,10 @@ if has("gui_running")
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
-"set encoding=utf8
+set encoding=utf8
 
 " Use Unix as the standard file type
-"set ffs=unix,dos,mac
+set ffs=unix,dos,mac
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
