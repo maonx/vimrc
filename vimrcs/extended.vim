@@ -1,4 +1,4 @@
-" Environment {
+" Environment {"{{{
 
     " Identify platform {
         silent function! OSX()
@@ -34,59 +34,31 @@
         endif
     " }
 
-" }
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => GUI related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }"}}}
+" GUI related"{{{
 " Set font according to system
-if has("mac") || has("macunix")
+if OSX()
     set gfn=Source\ Code\ Pro:h15,Menlo:h15
-elseif has("win16") || has("win32")
-    set gfn=Source\ Code\ Pro:h12,Bitstream\ Vera\ Sans\ Mono:h11
-elseif has("linux")
-    set gfn=Source\ Code\ Pro:h12,Bitstream\ Vera\ Sans\ Mono:h11
-elseif has("unix")
-    set gfn=Monospace\ 11
+elseif WINDOWS()
+    set gfn=Source\ Code\ Pro:h15,Menlo:h15
+    "set guifont=Microsoft\ YaHei\ Mono:h11.5
 endif
 
-" Open MacVim in fullscreen mode
-if has("gui_macvim")
-    set fuoptions=maxvert,maxhorz
-    au GUIEnter * set fullscreen
+" Open gvim in fullscreen mode
+if WINDOWS()
+    au GUIEnter * simalt ~x
 endif
 
-" Disable scrollbars (real hackers don't use scrollbars for navigation!)
-set guioptions-=r
-set guioptions-=R
-set guioptions-=l
-set guioptions-=L
-
-" Colorscheme
-colorscheme molokai
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Fast editing and reloading of vimrc configs
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>e :e! ~/.vimrc<cr>
-autocmd! bufwritepost vimrc source ~/.vimrc
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Turn persistent undo on 
-"    means that you can undo even when you close a buffer/VIM
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-try
-    set undodir=~/.vim/temp_dirs/undodir
-    set undofile
-catch
-endtry
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Command mode related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" set extra options when running in gui mode
+if has("gui_running") || WINDOWS()
+    set guioptions=""
+    set t_co=256
+    set guitablabel=%m\ %t
+endif"}}}
+" Theme"{{{
+set background=dark
+colorscheme molokai"}}}
+" Command mode related"{{{
 " Smart mappings on the command line
 cno $h e ~/
 cno $d e ~/Desktop/
@@ -103,43 +75,8 @@ cnoremap <C-E>		<End>
 cnoremap <C-K>		<C-U>
 
 cnoremap <C-P> <Up>
-cnoremap <C-N> <Down>
-
-" Map ½ to something useful
-map ½ $
-cmap ½ $
-imap ½ $
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Parenthesis/bracket
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-vnoremap $1 <esc>`>a)<esc>`<i(<esc>
-vnoremap $2 <esc>`>a]<esc>`<i[<esc>
-vnoremap $3 <esc>`>a}<esc>`<i{<esc>
-vnoremap $$ <esc>`>a"<esc>`<i"<esc>
-vnoremap $q <esc>`>a'<esc>`<i'<esc>
-vnoremap $e <esc>`>a"<esc>`<i"<esc>
-
-" Map auto complete of (, ", ', [
-inoremap $1 ()<esc>i
-inoremap $2 []<esc>i
-inoremap $3 {}<esc>i
-inoremap $4 {<esc>o}<esc>O
-inoremap $q ''<esc>i
-inoremap $e ""<esc>i
-inoremap $t <><esc>i
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General abbreviations
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Helper functions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+cnoremap <C-N> <Down>"}}}
+" Helper functions"{{{
 func! DeleteTillSlash()
     let g:cmd = getcmdline()
 
@@ -162,4 +99,4 @@ endfunc
 
 func! CurrentFileDir(cmd)
     return a:cmd . " " . expand("%:p:h") . "/"
-endfunc
+endfunc"}}}

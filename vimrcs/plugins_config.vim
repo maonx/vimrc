@@ -1,65 +1,25 @@
-" => bufExplorer plugin
-""""""""""""""""""""""""""""""
-let g:bufExplorerDefaultHelp=0
-let g:bufExplorerShowRelativePath=1
-let g:bufExplorerFindActive=1
-let g:bufExplorerSortBy='name'
-map <leader>o :BufExplorer<cr>
-
-
-" => MRU plugin
-""""""""""""""""""""""""""""""
-let MRU_Max_Entries = 400
-map <leader>f :MRU<CR>
-
-
-""""""""""""""""""""""""""""""
-" => YankRing
-""""""""""""""""""""""""""""""
-if has("win16") || has("win32")
-    " Don't do anything
-else
-    let g:yankring_history_dir = '~/.vim_runtime/temp_dirs/'
-endif
-
-
-""""""""""""""""""""""""""""""
-" => CTRL-P
-""""""""""""""""""""""""""""""
-let g:ctrlp_working_path_mode = 0
+" minibufexpl"{{{
+map <Leader>bl :MBEToggle<cr>
+map <F9> :MBEToggle<cr>
+map <c-n> :MBEbn<cr>
+map <c-p> :MBEbp<cr>"}}}
+" YankRing"{{{
+let g:yankring_history_dir = '~/.vim/temp_dirs/'
+"}}}
+" CTRL-P"{{{
+let g:ctrlp_working_path_mode = 1
 
 let g:ctrlp_map = '<c-f>'
 map <leader>j :CtrlP<cr>
 map <c-b> :CtrlPBuffer<cr>
 
 let g:ctrlp_max_height = 20
-let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
-
-""""""""""""""""""""""""""""""
-" => ZenCoding
-""""""""""""""""""""""""""""""
-" Enable all functions in all modes
-let g:user_zen_mode='a'
-
-
-""""""""""""""""""""""""""""""
-" => snipMate (beside <TAB> support <CTRL-j>)
-""""""""""""""""""""""""""""""
-"ino <c-j> <c-r>=snipMate#TriggerSnippet()<cr>
-"snor <c-j> <esc>i<right><c-r>=snipMate#TriggerSnippet()<cr>
-
-
-""""""""""""""""""""""""""""""
-" => Vim grep
-""""""""""""""""""""""""""""""
-let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated'
-set grepprg=/bin/grep\ -nH
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Nerd Tree
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+"}}}
+" Nerd Tree"{{{
 let g:NERDTreeWinPos = "right"
 let NERDTreeShowHidden=0
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
@@ -67,9 +27,8 @@ let g:NERDTreeWinSize=35
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark 
 map <leader>nf :NERDTreeFind<cr>
+"}}}
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-multiple-cursors
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:multi_cursor_next_key="\<C-s>"
@@ -87,7 +46,16 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 " => vim-airline config (force color)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_theme="luna"
-
+set guifont=Consolas\ for\ Powerline\ FixedD:h11
+set encoding=utf-8
+let g:airline_symbols = {}
+let g:airline_left_sep = "\u2b80" "use double quotes here
+let g:airline_left_alt_sep = "\u2b81"
+let g:airline_right_sep = "\u2b82"
+let g:airline_right_alt_sep = "\u2b83"
+let g:airline_symbols.branch = "\u2b60"
+let g:airline_symbols.readonly = "\u2b64"
+let g:airline_symbols.linenr = "\u2b61"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vimroom
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -102,7 +70,14 @@ nnoremap <silent> <leader>z :Goyo<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_python_checkers=['pyflakes']
 let g:syntastic_javascript_checkers = ['jshint']
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 " Custom CoffeeScript SyntasticCheck
 func! SyntasticCheckCoffeescript()
     let l:filename = substitute(expand("%:p"), '\(\w\+\)\.coffee', '.coffee.\1.js', '')
@@ -120,7 +95,11 @@ let g:gitgutter_enabled=0
 nnoremap <silent> <leader>d :GitGutterToggle<cr>
 
 "UltiSnips 设置"{{{
-let g:UltiSnipsUsePythonVersion = 2
+if has("win16") || has("win32")
+    let g:UltiSnipsUsePythonVersion = 3
+else 
+    let g:UltiSnipsUsePythonVersion = 2
+endif 
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"

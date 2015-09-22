@@ -27,6 +27,12 @@ Plugin 'pzich/phtmlSwitch-vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'kien/ctrlp.vim'
 Plugin 'maonx/vimim'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-scripts/YankRing.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'powerline/fonts'
+"Plugin 'ggreer/the_silver_searcher'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
