@@ -37,9 +37,8 @@
 " }"}}}
 " GUI related"{{{
 " Set font according to system
-if OSX()
-    set gfn=Source\ Code\ Pro:h15,Menlo:h15
-elseif WINDOWS()
+" iTerm set fonts in preferences
+if WINDOWS()
     set gfn=Source\ Code\ Pro:h15,Menlo:h15
     "set guifont=Microsoft\ YaHei\ Mono:h11.5
 endif
@@ -50,7 +49,7 @@ if WINDOWS()
 endif
 
 " set extra options when running in gui mode
-if has("gui_running") || WINDOWS()
+if WINDOWS()
     set guioptions=""
     set t_co=256
     set guitablabel=%m\ %t

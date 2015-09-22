@@ -35,8 +35,8 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 " avoid garbled characters in chinese language windows os
 let $lang='en' 
 set langmenu=en
-source $vimruntime/delmenu.vim
-source $vimruntime/menu.vim
+"source $vimruntime/delmenu.vim
+"source $vimruntime/menu.vim
 set fileencodings=ucs-bom,utf-8,cp936,big5
 
 " turn on the wild menu

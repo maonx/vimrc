@@ -46,16 +46,17 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 " => vim-airline config (force color)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_theme="luna"
-set guifont=Consolas\ for\ Powerline\ FixedD:h11
+let g:airline_powerline_fonts = 1
+" set guifont=Consolas\ for\ Powerline\ FixedD:h11
 set encoding=utf-8
-let g:airline_symbols = {}
-let g:airline_left_sep = "\u2b80" "use double quotes here
-let g:airline_left_alt_sep = "\u2b81"
-let g:airline_right_sep = "\u2b82"
-let g:airline_right_alt_sep = "\u2b83"
-let g:airline_symbols.branch = "\u2b60"
-let g:airline_symbols.readonly = "\u2b64"
-let g:airline_symbols.linenr = "\u2b61"
+" let g:airline_symbols = {}
+" let g:airline_left_sep = "\u2b80" "use double quotes here
+" let g:airline_left_alt_sep = "\u2b81"
+" let g:airline_right_sep = "\u2b82"
+" let g:airline_right_alt_sep = "\u2b83"
+" let g:airline_symbols.branch = "\u2b60"
+" let g:airline_symbols.readonly = "\u2b64"
+" let g:airline_symbols.linenr = "\u2b61"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vimroom
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
