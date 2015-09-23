@@ -13,13 +13,10 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " custom plugin
-Plugin 'fholgado/minibufexpl.vim'
 Plugin 'https://github.com/gorodinskiy/vim-coloresque.git'
-Plugin 'scrooloose/nerdcommenter'
 Plugin 'https://github.com/Shougo/neocomplete.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Valloric/MatchTagAlways'
-"Plugin 'Lokaltog/vim-powerline'
 Plugin 'bling/vim-airline'
 Plugin 'edsono/vim-matchit'
 Plugin 'tomasr/molokai'
@@ -32,7 +29,11 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-scripts/YankRing.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'powerline/fonts'
+"Plugin 'jisaacks/GitGutter'
+"Plugin 'scrooloose/nerdcommenter'
 "Plugin 'ggreer/the_silver_searcher'
+"Plugin 'fholgado/minibufexpl.vim'
+"Plugin 'Lokaltog/vim-powerline'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

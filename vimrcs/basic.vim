@@ -28,13 +28,14 @@ command W w !sudo tee % > /dev/null
 set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+" set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
 "}}}
 " vim user interface"{{{
 " avoid garbled characters in chinese language windows os
 let $lang='en' 
 set langmenu=en
+set encoding=utf-8
 "source $vimruntime/delmenu.vim
 "source $vimruntime/menu.vim
 set fileencodings=ucs-bom,utf-8,cp936,big5
