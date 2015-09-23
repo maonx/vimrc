@@ -1,3 +1,55 @@
+" Environment {"{{{
+
+    " Identify platform {
+        silent function! OSX()
+            return has('macunix')
+        endfunction
+        silent function! LINUX()
+            return has('unix') && !has('macunix') && !has('win32unix')
+        endfunction
+        silent function! WINDOWS()
+            return  (has('win16') || has('win32') || has('win64'))
+        endfunction
+    " }
+
+    " Basics {
+        set nocompatible        " Must be first line
+        if !WINDOWS()
+            set shell=/bin/sh
+        endif
+    " }
+
+    " Windows Compatible {
+        " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
+        " across (heterogeneous) systems easier.
+        if WINDOWS()
+          set runtimepath+=~/.vim
+        endif
+    " }
+    
+" }"}}}
+" GUI related"{{{
+" Set font according to system
+" iTerm set fonts in preferences
+if WINDOWS()
+    set gfn=Source\ Code\ Pro:h15,Menlo:h15
+    "set guifont=Microsoft\ YaHei\ Mono:h11.5
+endif
+
+" Open gvim in fullscreen mode
+if WINDOWS()
+    au GUIEnter * simalt ~x
+endif
+
+" set extra options when running in gui mode
+if WINDOWS()
+    set guioptions=""
+    set t_co=256
+    set guitablabel=%m\ %t
+endif"}}}
+" Theme"{{{
+set background=dark
+colorscheme molokai"}}}
 " General"{{{
 " Sets how many lines of history VIM has to remember
 set history=500
@@ -39,6 +91,7 @@ set encoding=utf-8
 "source $vimruntime/delmenu.vim
 "source $vimruntime/menu.vim
 set fileencodings=ucs-bom,utf-8,cp936,big5
+set ffs=mac,unix,dos
 
 " turn on the wild menu
 set wildmenu
@@ -167,6 +220,10 @@ map <leader>ba :bufdo bd<cr>
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+" Switch CWD to custom directory 
+map <leader>tb :cd ~/Documents/taobaoSDK/TAE_SDK/htdocs<cr>
+
 "}}}
 " Editing mappings"{{{
 " Remap VIM 0 to first non-blank character
@@ -176,6 +233,39 @@ vnoremap <Leader>y "+y
 nmap <Leader>p "+p
 nmap <Leader>P "+P
 
+" ctrl-c and ctrl-v window like"{{{
+if WINDOWS()
+    " CTRL-C and CTRL-Insert are Copy
+    vnoremap <C-C> "+y
+    vnoremap <C-Insert> "+y
+
+    " CTRL-V and SHIFT-Insert are Paste
+    map <C-V>		"+gP
+    map <S-Insert>		"+gP
+
+    cmap <C-V>		<C-R>+
+    cmap <S-Insert>		<C-R>+
+
+    " Pasting blockwise and linewise selections is not possible in Insert and
+    " Visual mode without the +virtualedit feature.  They are pasted as if they
+    " were characterwise instead.
+    " Uses the paste.vim autoload script.
+    " Use CTRL-G u to have CTRL-Z only undo the paste.
+
+    exe 'inoremap <script> <C-V> <C-G>u' . paste#paste_cmd['i']
+    exe 'vnoremap <script> <C-V> ' . paste#paste_cmd['v']
+
+    imap <S-Insert>		<C-V>
+    vmap <S-Insert>		<C-V>
+
+    " Use CTRL-Q to do what CTRL-V used to do
+    noremap <C-Q>		<C-V>
+
+    " Use CTRL-S for saving, also in Insert mode
+    noremap <C-S>		:update<CR>
+    vnoremap <C-S>		<C-C>:update<CR>
+    inoremap <C-S>		<C-O>:update<CR>
+endif"}}}
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
@@ -198,6 +288,24 @@ endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 "}}}
+" Command mode related"{{{
+" Smart mappings on the command line
+cno $h e ~/
+cno $d e ~/Desktop/
+cno $j e ./
+cno $c e <C-\>eCurrentFileDir("e")<cr>
+
+" $q is super useful when browsing on the command line
+" it deletes everything until the last slash 
+cno $q <C-\>eDeleteTillSlash()<cr>
+
+" Bash like keys for the command line
+cnoremap <C-A>		<Home>
+cnoremap <C-E>		<End>
+cnoremap <C-K>		<C-U>
+
+cnoremap <C-P> <Up>
+cnoremap <C-N> <Down>"}}}
 " Misc"{{{
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
@@ -267,4 +375,27 @@ function! <SID>BufcloseCloseIt()
     if buflisted(l:currentBufNum)
         execute("bdelete! ".l:currentBufNum)
     endif
-endfunction"}}}
+endfunction
+func! DeleteTillSlash()
+    let g:cmd = getcmdline()
+
+    if has("win16") || has("win32")
+        let g:cmd_edited = substitute(g:cmd, "\\(.*\[\\\\]\\).*", "\\1", "")
+    else
+        let g:cmd_edited = substitute(g:cmd, "\\(.*\[/\]\\).*", "\\1", "")
+    endif
+
+    if g:cmd == g:cmd_edited
+        if has("win16") || has("win32")
+            let g:cmd_edited = substitute(g:cmd, "\\(.*\[\\\\\]\\).*\[\\\\\]", "\\1", "")
+        else
+            let g:cmd_edited = substitute(g:cmd, "\\(.*\[/\]\\).*/", "\\1", "")
+        endif
+    endif   
+
+    return g:cmd_edited
+endfunc
+
+func! CurrentFileDir(cmd)
+    return a:cmd . " " . expand("%:p:h") . "/"
+endfunc"}}}
