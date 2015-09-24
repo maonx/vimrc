@@ -31,10 +31,9 @@
 " GUI related"{{{
 " Set font according to system
 " iTerm set fonts in preferences
-if WINDOWS()
-    set gfn=Source\ Code\ Pro:h15,Menlo:h15
-    "set guifont=Microsoft\ YaHei\ Mono:h11.5
-endif
+" if WINDOWS()
+"     set gfn=Source\ Code\ Pro:h15,Menlo:h15
+" endif
 
 " Open gvim in fullscreen mode
 if WINDOWS()
