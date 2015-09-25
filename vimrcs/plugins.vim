@@ -31,6 +31,9 @@ Plugin 'scrooloose/syntastic'
 Plugin 'powerline/fonts'
 Plugin 'iamcco/markdown-preview.vim'
 Plugin 'godlygeek/tabular'
+if has('mac')
+    Plugin 'suan/vim-instant-markdown'
+endif
 "Plugin 'jisaacks/GitGutter'
 "Plugin 'scrooloose/nerdcommenter'
 "Plugin 'ggreer/the_silver_searcher'
