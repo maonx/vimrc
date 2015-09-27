@@ -1,8 +1,8 @@
 # Folder view configuration files
 .DS_Store
 Desktop.ini
-temp_dirs
 bundle
+temp_dirs
 
 # Thumbnail cache files
 ._*

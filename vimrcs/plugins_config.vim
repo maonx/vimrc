@@ -191,3 +191,6 @@ function! s:align()
     call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
   endif
 endfunction"}}}
+
+"vimim
+let g:Vimim_punctuation = -1  

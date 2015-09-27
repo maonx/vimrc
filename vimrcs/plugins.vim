@@ -31,6 +31,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'powerline/fonts'
 Plugin 'iamcco/markdown-preview.vim'
 Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 if has('mac')
     Plugin 'suan/vim-instant-markdown'
 endif
