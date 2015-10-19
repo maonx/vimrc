@@ -9,5 +9,7 @@ au BufRead,BufNewFile css.snippets set ft=css syntax=css
 
 au BufRead,BufNewFile *.scss let b:acmd_auto_encode=0
 
+" ftl filetype
+au BufRead,BufNewFile *.ftl set ft=html syntax=html
 
 
