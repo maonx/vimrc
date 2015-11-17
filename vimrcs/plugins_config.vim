@@ -20,11 +20,14 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 " Nerd Tree"{{{
 let g:NERDTreeWinPos = "right"
 let NERDTreeShowHidden=0
-let NERDTreeIgnore = ['\.pyc$', '__pycache__']
-let g:NERDTreeWinSize=35
+let NERDTreeIgnore = ['\.pyc$', '__pycache__', '^NTUSER\.DAT']
+let g:NERDTreeWinSize=30
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark 
 map <leader>nf :NERDTreeFind<cr>
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
 "}}}
 " vim-airline config (force color)"{{{
 let g:airline_theme="luna"
