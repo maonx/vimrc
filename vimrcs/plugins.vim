@@ -32,6 +32,8 @@ Plugin 'iamcco/markdown-preview.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/nerdtree'
+Plugin 'vim-scripts/taglist.vim'
+Plugin 'majutsushi/tagbar'
 if has('mac')
     Plugin 'suan/vim-instant-markdown'
 endif
