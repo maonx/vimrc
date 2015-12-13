@@ -20,22 +20,18 @@ Plugin 'Valloric/MatchTagAlways'
 Plugin 'bling/vim-airline'
 Plugin 'edsono/vim-matchit'
 Plugin 'tomasr/molokai'
-Plugin 'pzich/phtmlSwitch-vim'
+" Plugin 'pzich/phtmlSwitch-vim'
 Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'mattn/emmet-vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'maonx/vimim'
 Plugin 'tpope/vim-commentary'
 Plugin 'vim-scripts/YankRing.vim'
 Plugin 'scrooloose/syntastic'
-Plugin 'powerline/fonts'
-Plugin 'iamcco/markdown-preview.vim'
 Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
-if has('mac')
-    Plugin 'suan/vim-instant-markdown'
-endif
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

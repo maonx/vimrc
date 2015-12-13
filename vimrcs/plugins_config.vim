@@ -78,15 +78,11 @@ endfunc
 nnoremap <silent> <leader>l :call SyntasticCheckCoffeescript()<cr>
 "}}}
 "UltiSnips "{{{
-if has("win16") || has("win32")
-    let g:UltiSnipsUsePythonVersion = 3
-else 
-    let g:UltiSnipsUsePythonVersion = 2
-endif 
+let g:UltiSnipsUsePythonVersion = 2
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:UltiSnipsSnippetDirectories=[$HOME.'/Documents/snippets']
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/bundle/vim-snippets/UltiSnips']
 let g:UltiSnipsRemoveSelectModeMappings = 1
 "}}}
 "Neocomplete"{{{
@@ -94,7 +90,7 @@ let g:neocomplete#enable_at_startup = 1
 "popup width
 let g:neocomplete#max_list = 15
 "keyword width
-let g:neocomplete#max_keyword_width = 40 
+" let g:neocomplete#max_keyword_width = 40 
 
 "auto complete  
 inoremap <leader>n <C-x><C-o>
