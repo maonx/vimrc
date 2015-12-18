@@ -26,8 +26,10 @@ map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark 
 map <leader>nf :NERDTreeFind<cr>
 let g:NERDTreeDirArrows = 1
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
+if !WINDOWS()
+    let g:NERDTreeDirArrowExpandable = '▸'
+    let g:NERDTreeDirArrowCollapsible = '▾'
+endif
 "}}}
 " vim-airline config (force color)"{{{
 let g:airline_theme="luna"
@@ -42,20 +44,25 @@ nnoremap <C-P> :bp<CR>
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#whitespace#symbol = '!'
 if WINDOWS()
-    set guifont=Consolas\ for\ Powerline\ FixedD:h11
-    let g:Powerline_symbols="fancy"
-    let g:airline_symbols = {}
-    let g:airline_left_sep = "\u2b80" "use double quotes here
-    let g:airline_left_alt_sep = "\u2b81"
-    let g:airline_right_sep = "\u2b82"
-    let g:airline_right_alt_sep = "\u2b83"
-    let g:airline_symbols.branch = "\u2b60"
-    let g:airline_symbols.readonly = "\u2b64"
-    let g:airline_symbols.linenr = "\u2b61"
+    " set guifont=Consolas\ for\ Powerline\ FixedD:h11
+    " set guifont=AAA\ YaHei\ Monaco:h11
+    " set guifont=AAA\ YaHei\ Monaco\ YaHei\ Consolas\ Hybrid\ Regular\ for\ Powerline:h11
+    " set guifont=AAA\ YaHei\ Monaco\ YaHei\ Consolas\ Hybrid\ Regular:h11
+    " set guifont=Microsoft\ YaHei\ Mono\ for\ Powerl:h11
+    set guifont=Microsoft\ YaHei\ Mono:h11
+    " let g:Powerline_symbols="fancy"
+    " let g:airline_symbols = {}
+    " let g:airline_left_sep = "\u2b80" "use double quotes here
+    " let g:airline_left_alt_sep = "\u2b81"
+    " let g:airline_right_sep = "\u2b82"
+    " let g:airline_right_alt_sep = "\u2b83"
+    " let g:airline_symbols.branch = "\u2b60"
+    " let g:airline_symbols.readonly = "\u2b64"
+    " let g:airline_symbols.linenr = "\u2b61"
 
 
-    let g:airline#extensions#tabline#left_sep = "\u2b80"
-    let g:airline#extensions#tabline#left_alt_sep = "\u2b81"
+    " let g:airline#extensions#tabline#left_sep = "\u2b80"
+    " let g:airline#extensions#tabline#left_alt_sep = "\u2b81"
 endif "}}}
 " Syntastic (syntax checker)"{{{
 let g:syntastic_python_checkers=['pyflakes']
