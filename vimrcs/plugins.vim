@@ -20,6 +20,8 @@ Plugin 'Valloric/MatchTagAlways'
 Plugin 'bling/vim-airline'
 Plugin 'edsono/vim-matchit'
 Plugin 'tomasr/molokai'
+Plugin 'christoomey/vim-tmux-navigator'
+
 " Plugin 'pzich/phtmlSwitch-vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'maonx/vim-snippets'
