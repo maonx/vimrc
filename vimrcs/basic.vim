@@ -90,7 +90,7 @@ set encoding=utf-8
 "source $vimruntime/delmenu.vim
 "source $vimruntime/menu.vim
 set fileencodings=ucs-bom,utf-8,cp936,big5
-set ffs=mac,unix,dos
+set ffs=unix,dos,mac
 
 " turn on the wild menu
 set wildmenu
